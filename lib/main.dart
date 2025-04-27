@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'game_page.dart';
+import 'about_page.dart';
 
 void main() {
   runApp(
@@ -74,7 +75,7 @@ class MyHomePage extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: screenHeight * 0.13,
+            top: screenHeight * 0.10,
             right: screenWidth * 0.05,
             child: Transform.rotate(
               angle: 0.35,
@@ -85,7 +86,7 @@ class MyHomePage extends StatelessWidget {
             ),
           ),
           Positioned(
-            bottom: screenHeight * 0.07,
+            bottom: screenHeight * 0.05,
             left: screenWidth * 0.1,
             child: Transform.rotate(
               angle: -0.65,
@@ -127,6 +128,32 @@ class MyHomePage extends StatelessWidget {
                     },
                     child: const Text(
                       'Start Game',
+                      style: TextStyle(
+                        fontSize: 24,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+
+                  const SizedBox(height: 20),
+
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFFF9C99E),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(35),
+                      ),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 40, vertical: 14),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const AboutPage()),
+                      );
+                    },
+                    child: const Text(
+                      'About Game',
                       style: TextStyle(
                         fontSize: 24,
                         color: Colors.white,
