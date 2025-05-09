@@ -58,6 +58,9 @@ flutter:
     - assets/images/paper.png
     - assets/images/rock.png
     - assets/images/scissors.png
+    - assets/images/timmy.jpeg
+    - assets/images/minion.jpeg
+    - assets/images/loppy.jpeg
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

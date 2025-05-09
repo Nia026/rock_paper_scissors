@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart'; // Import go_router
 
 class GamePage extends StatefulWidget {
   const GamePage({super.key});
@@ -134,7 +135,7 @@ class _GamePageState extends State<GamePage> {
                       ),
                     ),
                     onPressed: () {
-                      Navigator.pop(context);
+                      context.go('/'); // Menggunakan context.go('/') untuk kembali ke homepage
                     },
                     child: const Text('Homepage', style: TextStyle(fontSize: 20)),
                   ),
