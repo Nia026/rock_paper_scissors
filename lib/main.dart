@@ -9,6 +9,8 @@ import 'screens/AboutMemoryCard.dart';
 import 'screens/MemoryCard.dart';
 import 'screens/AboutGuessNumber.dart';
 import 'screens/GuessTheNumber.dart';
+import 'screens/CoinToss.dart';
+import 'screens/DiceRoll.dart';
 
 void main() {
   runApp(
@@ -43,7 +45,9 @@ class MyGames extends StatelessWidget {
           GoRoute(path: '/aboutMemoryCard', builder: (context, state) => const AboutMemoryCard()),
           GoRoute(path:'/MemoryCard', builder: (context, state) => const MemoryCard()),
           GoRoute(path: '/aboutGuessNumber', builder: (context, state) => AboutGuessTheNumber()),
-          GoRoute(path:'/GuessTheNumber', builder: (context, state) => GuessTheNumber())
+          GoRoute(path:'/GuessTheNumber', builder: (context, state) => GuessTheNumber()),
+          GoRoute(path: '/CoinToss', builder: (context, state) => CoinToss()),
+          GoRoute(path: '/DiceRoll', builder: (context, state) => DiceRoll())
         ],
       ),
       title: 'My Games', // Atau judul lain yang Anda inginkan

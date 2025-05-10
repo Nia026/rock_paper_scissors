@@ -72,13 +72,13 @@ class ListGames extends StatelessWidget {
                   SizedBox(height: screenHeight * 0.03),
                   _GameButton(
                     title: 'Coin Toss',
-                    onPressed: () => context.push('/cointoss'),
+                    onPressed: () => context.push('/CoinToss'),
                     height: buttonHeight,
                   ),
                   SizedBox(height: screenHeight * 0.03),
                   _GameButton(
                     title: 'Dice Roll',
-                    onPressed: () => context.push('/diceroll'),
+                    onPressed: () => context.push('/DiceRoll'),
                     height: buttonHeight,
                   ),
                 ],

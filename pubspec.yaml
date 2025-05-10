@@ -61,6 +61,14 @@ flutter:
     - assets/images/timmy.jpeg
     - assets/images/minion.jpeg
     - assets/images/loppy.jpeg
+    - assets/images/coin_number.png
+    - assets/images/coin_person.png
+    - assets/images/dice_1.png
+    - assets/images/dice_2.png
+    - assets/images/dice_3.png
+    - assets/images/dice_4.png
+    - assets/images/dice_5.png
+    - assets/images/dice_6.png
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
