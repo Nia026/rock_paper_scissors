@@ -108,18 +108,18 @@ class _MemoryCardState extends State<MemoryCard> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      _buildCard(0, cardSize),
-                      _buildCard(1, cardSize),
-                      _buildCard(2, cardSize),
+                      _buildAnimatedCard(0, cardSize),
+                      _buildAnimatedCard(1, cardSize),
+                      _buildAnimatedCard(2, cardSize),
                     ],
                   ),
                   SizedBox(height: screenHeight * 0.03),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      _buildCard(3, cardSize),
-                      _buildCard(4, cardSize),
-                      _buildCard(5, cardSize),
+                      _buildAnimatedCard(3, cardSize),
+                      _buildAnimatedCard(4, cardSize),
+                      _buildAnimatedCard(5, cardSize),
                     ],
                   ),
                 ],
@@ -131,14 +131,18 @@ class _MemoryCardState extends State<MemoryCard> {
             left: 0,
             right: 0,
             child: Center(
-              child: Text(
-                gameWon ? 'You Win' : '',
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  color: Color(0xFF7CD86A),
-                  fontSize: 36,
-                  fontFamily: 'Itim',
-                  fontWeight: FontWeight.w400,
+              child: AnimatedOpacity(
+                duration: const Duration(milliseconds: 500),
+                opacity: gameWon ? 1.0 : 0.0,
+                child: Text(
+                  gameWon ? 'You Win' : '',
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    color: Color(0xFF7CD86A),
+                    fontSize: 36,
+                    fontFamily: 'Itim',
+                    fontWeight: FontWeight.w400,
+                  ),
                 ),
               ),
             ),
@@ -205,26 +209,42 @@ class _MemoryCardState extends State<MemoryCard> {
     );
   }
 
-  Widget _buildCard(int index, double size) {
+  Widget _buildAnimatedCard(int index, double size) {
     return GestureDetector(
       onTap: () => _handleCardTap(index),
-      child: Container(
-        width: size,
-        height: size,
-        decoration: BoxDecoration(
-          color: isRevealed[index] ? Colors.white : const Color(0xFFFFFFFF),
-          borderRadius: BorderRadius.circular(10),
+      child: AnimatedScale(
+        duration: const Duration(milliseconds: 200),
+        scale: isRevealed[index] ? 1.0 : 1.0, // Inisialisasi skala
+        child: TweenAnimationBuilder<double>(
+          tween: Tween<double>(begin: isRevealed[index] ? 0.0 : 1.0, end: isRevealed[index] ? 1.0 : 1.0),
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeInOut,
+          builder: (context, scale, child) {
+            return Transform.scale(
+              scale: scale,
+              child: Container(
+                width: size,
+                height: size,
+                decoration: BoxDecoration(
+                  color: isRevealed[index] ? Colors.white : const Color(0xFFFFFFFF),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                alignment: Alignment.center,
+                child: AnimatedOpacity(
+                  duration: const Duration(milliseconds: 150),
+                  opacity: isRevealed[index] ? 1.0 : 0.0,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Image.asset(
+                      images[index],
+                      fit: BoxFit.contain,
+                    ),
+                  ),
+                ),
+              ),
+            );
+          },
         ),
-        alignment: Alignment.center,
-        child: isRevealed[index]
-            ? Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Image.asset(
-            images[index],
-            fit: BoxFit.contain,
-          ),
-        )
-            : null,
       ),
     );
   }

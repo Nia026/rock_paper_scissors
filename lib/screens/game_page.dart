@@ -66,117 +66,122 @@ class _GamePageState extends State<GamePage> {
   Widget build(BuildContext context) {
     final screen = MediaQuery.of(context).size;
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color(0xFFF9C99E),
+        centerTitle: true,
+        title: const Text(
+          'Rock, Paper, Scissors',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 28,
+            fontFamily: 'Itim',
+            fontWeight: FontWeight.w400,
+          ),
+        ),
+      ),
       body: SingleChildScrollView(
-        child: Container(
-          width: screen.width,
-          height: screen.height,
-          color: Colors.white,
-          child: Column(
-            children: [
-              Container(
-                width: screen.width,
-                height: 76,
-                color: const Color(0xFFF9C99E),
-                alignment: Alignment.center,
-                child: const Text(
-                  'Game Page',
-                  style: TextStyle(fontSize: 36, color: Colors.white),
+        child: ConstrainedBox(
+          constraints: BoxConstraints(minHeight: screen.height),
+          child: Container(
+            width: screen.width,
+            color: Colors.white,
+            child: Column(
+              children: [
+                const SizedBox(height: 20),
+                const Text(
+                  'Computer',
+                  style: TextStyle(fontSize: 30, color: Color(0xFFF9C99E)),
                 ),
-              ),
-              const SizedBox(height: 20),
-              const Text(
-                'Computer',
-                style: TextStyle(fontSize: 30, color: Color(0xFFF9C99E)),
-              ),
-              const SizedBox(height: 10),
-              moveIcon(computerMove),
-              const SizedBox(height: 10),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    '$computerScore',
-                    style: const TextStyle(fontSize: 36, color: Color(0xFFF9C99E)),
-                  ),
-                  const SizedBox(width: 20),
-                  Text(
-                    result,
-                    style: TextStyle(
-                      fontSize: 30,
-                      color: getResultColor(),
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const SizedBox(width: 20),
-                  Text(
-                    '$playerScore',
-                    style: const TextStyle(fontSize: 36, color: Color(0xFFF9C99E)),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 10),
-              const Text(
-                'You',
-                style: TextStyle(fontSize: 30, color: Color(0xFFF9C99E)),
-              ),
-              const SizedBox(height: 10),
-              moveIcon(playerMove),
-              const SizedBox(height: 30),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFFF9C99E),
-                      foregroundColor: Colors.white,
-                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(35),
-                      ),
-                    ),
-                    onPressed: () {
-                      context.go('/'); // Menggunakan context.go('/') untuk kembali ke homepage
-                    },
-                    child: const Text('Homepage', style: TextStyle(fontSize: 20)),
-                  ),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFFF9C99E),
-                      foregroundColor: Colors.white,
-                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(35),
-                      ),
-                    ),
-                    onPressed: resetScore,
-                    child: const Text('Reset Score', style: TextStyle(fontSize: 20)),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 20),
-              Container(
-                width: double.infinity,
-                color: const Color(0xFFF9C99E),
-                padding: const EdgeInsets.symmetric(vertical: 20),
-                child: Column(
+                const SizedBox(height: 10),
+                moveIcon(computerMove),
+                const SizedBox(height: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text(
-                      'Pick This:',
-                      style: TextStyle(fontSize: 30, color: Colors.white),
+                    Text(
+                      '$computerScore',
+                      style: const TextStyle(fontSize: 36, color: Color(0xFFF9C99E)),
                     ),
-                    const SizedBox(height: 20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        pickButton(Move.rock),
-                        pickButton(Move.paper),
-                        pickButton(Move.scissors),
-                      ],
+                    const SizedBox(width: 20),
+                    Text(
+                      result,
+                      style: TextStyle(
+                        fontSize: 30,
+                        color: getResultColor(),
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(width: 20),
+                    Text(
+                      '$playerScore',
+                      style: const TextStyle(fontSize: 36, color: Color(0xFFF9C99E)),
                     ),
                   ],
                 ),
-              )
-            ],
+                const SizedBox(height: 10),
+                const Text(
+                  'You',
+                  style: TextStyle(fontSize: 30, color: Color(0xFFF9C99E)),
+                ),
+                const SizedBox(height: 10),
+                moveIcon(playerMove),
+                const SizedBox(height: 30),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFFF9C99E),
+                        foregroundColor: Colors.white,
+                        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(35),
+                        ),
+                      ),
+                      onPressed: () {
+                        context.go('/');
+                      },
+                      child: const Text('Homepage', style: TextStyle(fontSize: 20)),
+                    ),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFFF9C99E),
+                        foregroundColor: Colors.white,
+                        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(35),
+                        ),
+                      ),
+                      onPressed: resetScore,
+                      child: const Text('Reset Score', style: TextStyle(fontSize: 20)),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 20),
+                Container(
+                  width: double.infinity,
+                  color: const Color(0xFFF9C99E),
+                  padding: const EdgeInsets.symmetric(vertical: 20),
+                  child: Column(
+                    children: [
+                      const Text(
+                        'Pick This:',
+                        style: TextStyle(fontSize: 30, color: Colors.white),
+                      ),
+                      const SizedBox(height: 20),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          AnimatedPickButton(move: Move.rock, onPlay: play),
+                          AnimatedPickButton(move: Move.paper, onPlay: play),
+                          AnimatedPickButton(move: Move.scissors, onPlay: play),
+                        ],
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),
@@ -201,10 +206,63 @@ class _GamePageState extends State<GamePage> {
     }
     return Image.asset(imagePath, width: 80, height: 80);
   }
+}
 
-  Widget pickButton(Move move) {
+class AnimatedPickButton extends StatefulWidget {
+  final Move move;
+  final Function(Move) onPlay;
+
+  const AnimatedPickButton({
+    super.key,
+    required this.move,
+    required this.onPlay,
+  });
+
+  @override
+  State<AnimatedPickButton> createState() => _AnimatedPickButtonState();
+}
+
+class _AnimatedPickButtonState extends State<AnimatedPickButton> with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _scaleAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 150),
+    );
+    _scaleAnimation = Tween<double>(begin: 1.0, end: 0.80).animate(
+      CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
+    )..addListener(() {
+      setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  void _handleTapDown(TapDownDetails details) {
+    _controller.forward();
+  }
+
+  void _handleTapUp(TapUpDetails details) {
+    _controller.reverse();
+    widget.onPlay(widget.move);
+  }
+
+  void _handleTapCancel() {
+    _controller.reverse();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     String imagePath;
-    switch (move) {
+    switch (widget.move) {
       case Move.rock:
         imagePath = 'assets/images/rock.png';
         break;
@@ -217,34 +275,18 @@ class _GamePageState extends State<GamePage> {
     }
 
     return GestureDetector(
-      onTap: () => play(move),
-      child: Container(
-        decoration: const BoxDecoration(
-          shape: BoxShape.circle,
-          color: Colors.white,
-        ),
-        padding: const EdgeInsets.all(20),
-        child: Image.asset(imagePath, width: 60, height: 60),
-      ),
-    );
-  }
-
-  Widget mainButton({required String text, required VoidCallback onPressed}) {
-    return ElevatedButton(
-      onPressed: onPressed,
-      style: ElevatedButton.styleFrom(
-        backgroundColor: const Color(0xFFF9C99E),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(35),
-        ),
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-      ),
-      child: Text(
-        text,
-        style: const TextStyle(
-          color: Colors.white,
-          fontSize: 20,
-          fontFamily: 'Itim',
+      onTapDown: _handleTapDown,
+      onTapUp: _handleTapUp,
+      onTapCancel: _handleTapCancel,
+      child: ScaleTransition(
+        scale: _scaleAnimation,
+        child: Container(
+          decoration: const BoxDecoration(
+            shape: BoxShape.circle,
+            color: Colors.white,
+          ),
+          padding: const EdgeInsets.all(20),
+          child: Image.asset(imagePath, width: 60, height: 60),
         ),
       ),
     );
